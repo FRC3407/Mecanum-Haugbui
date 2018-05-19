@@ -10,7 +10,7 @@ package org.usfirst.frc.team3407.robot.subsystems;
 import org.usfirst.frc.team3407.robot.RobotMap;
 import org.usfirst.frc.team3407.robot.commands.DriveCommand;
 
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.MecanumDrive;
 
@@ -20,10 +20,10 @@ import edu.wpi.first.wpilibj.drive.MecanumDrive;
 public class DriveSubsystem extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-	private Victor 	frontLeft = new Victor(RobotMap.FRONT_LEFT_MOTOR);
-	private Victor 	frontRight = new Victor(RobotMap.FRONT_RIGHT_MOTOR);
-	private Victor 	backLeft = new Victor(RobotMap.BACK_LEFT_MOTOR);
-	private Victor 	backRight = new Victor(RobotMap.BACK_RIGHT_MOTOR);
+	private PWMVictorSPX frontLeft = new PWMVictorSPX(RobotMap.FRONT_LEFT_MOTOR);
+	private PWMVictorSPX frontRight = new PWMVictorSPX(RobotMap.FRONT_RIGHT_MOTOR);
+	private PWMVictorSPX backLeft = new PWMVictorSPX(RobotMap.BACK_LEFT_MOTOR);
+	private PWMVictorSPX backRight = new PWMVictorSPX(RobotMap.BACK_RIGHT_MOTOR);
 	
 	
 	
@@ -35,12 +35,12 @@ public class DriveSubsystem extends Subsystem {
 		
 		//only use if necessary
 		//myDrive.setSafetyEnabled(false);
-		
+		myMecDrive.setDeadband(0.1);
 		setDefaultCommand(new DriveCommand());
 	}
 	
 	public void mecanum(double y, double x, double z) {
-		myMecDrive.driveCartesian(y, x, z);
+		myMecDrive.driveCartesian(-.5*y, .5*x, -.2*z);
 	}
 	
 	public void stop() {

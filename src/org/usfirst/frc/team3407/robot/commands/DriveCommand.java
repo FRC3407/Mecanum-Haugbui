@@ -28,7 +28,7 @@ public class DriveCommand extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	@Override
 	protected void execute() {
-		Robot.drive.mecanum(Robot.m_oi.driveStick.getY(), Robot.m_oi.driveStick.getX(), Robot.m_oi.driveStick.getZ());
+		Robot.drive.mecanum(Robot.m_oi.driveStick.getX(), Robot.m_oi.driveStick.getY(), Robot.m_oi.driveStick.getZ());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

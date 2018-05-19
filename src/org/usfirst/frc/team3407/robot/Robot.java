@@ -40,6 +40,11 @@ public class Robot extends TimedRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 	}
+	
+	@Override
+	public void robotPeriodic() {
+		// Do nothing since scheduler is called for autonomous and teleop
+	}
 
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
